@@ -6,11 +6,6 @@ using System.ComponentModel.DataAnnotations;
 
 public class User
 {
-    string user;
-    string email;
-    string password;
-
-    int userid;
 
     [Required, Length(4, 16)]
     public string? Username {get; set;}
@@ -21,12 +16,13 @@ public class User
     [Required, Length(8, 30)]
     private string? Password {get; set;}
 
-    private int Userid {get; set;}
+    public int UserId {get; set;}
 
 }
 
 public class Study
 {
+    public int NoteId {get; set;}
     List<Study> notes = new List<Study>();
 
     public string? Note {get; set;}
@@ -34,5 +30,5 @@ public class Study
     [Required, Length(4, 16)]
     public string? Subject {get; set;}
 
-    public int Noteid {get; set;}
+    
 }

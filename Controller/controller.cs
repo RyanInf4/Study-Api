@@ -1,0 +1,57 @@
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Mvc;
+using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
+
+[ApiController]
+[Route("api/[controller]")]
+
+public class StudyController : ControllerBase
+{
+
+    private readonly StudyDbContext _context;
+
+    public StudyController (StudyDbContext context)
+    {
+        _context = context;
+    }
+
+    [HttpGet]
+
+    public IActionResult GetUsers()
+    {
+        _context.Users.ToList();
+
+        return Ok (_context.Users);
+    }
+
+    [HttpGet("id")]
+
+    public IActionResult GetUserById(User user, int id)
+    {
+        var FindUser = _context.Users.FirstOrDefault(ExpectedId => id == user.UserId);
+
+        return Ok(FindUser);
+    }
+
+        [HttpPost]
+
+    public IActionResult CreateUser ([FromBody] User user)
+    {
+        _context.Users.Add(user);
+        _context.SaveChanges();
+
+        return Ok(user);
+    }
+
+
+    // [HttpPost]
+
+    // public IActionResult CreateUser ([FromBody] User user)
+    // {
+    //     _context.Users.Add(user);
+    //     _context.SaveChanges();
+
+    //     return CreatedAtAction(nameof(GetUserById), new { Id = user.UserId }, user);
+    // }
+    
+}
