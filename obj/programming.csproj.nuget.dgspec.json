@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/infavoravel/Documents/programming/programming.csproj": {}
+    "/home/infavoravel/Documents/programming/Study-Api/programming.csproj": {}
   },
   "projects": {
-    "/home/infavoravel/Documents/programming/programming.csproj": {
+    "/home/infavoravel/Documents/programming/Study-Api/programming.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/infavoravel/Documents/programming/programming.csproj",
+        "projectUniqueName": "/home/infavoravel/Documents/programming/Study-Api/programming.csproj",
         "projectName": "programming",
-        "projectPath": "/home/infavoravel/Documents/programming/programming.csproj",
+        "projectPath": "/home/infavoravel/Documents/programming/Study-Api/programming.csproj",
         "packagesPath": "/home/infavoravel/.nuget/packages/",
-        "outputPath": "/home/infavoravel/Documents/programming/obj/",
+        "outputPath": "/home/infavoravel/Documents/programming/Study-Api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/infavoravel/.nuget/NuGet/NuGet.Config"
@@ -37,8 +37,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "10.0.100"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -88,10 +87,6 @@
             {
               "name": "Microsoft.AspNetCore.App.Ref",
               "version": "[8.0.30, 8.0.30]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.linux-x64",
-              "version": "[8.0.30, 8.0.30]"
             }
           ],
           "frameworkReferences": {
@@ -102,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.111/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.424/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

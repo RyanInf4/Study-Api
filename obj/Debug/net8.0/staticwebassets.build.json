@@ -1,1 +1,11 @@
-{"Version":1,"Hash":"GnMiSi9iXkA4dX6742wmbsz9ufAbQSt9gOr4xb+1wPs=","Source":"programming","BasePath":"/","Mode":"Root","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}
+{
+  "Version": 1,
+  "Hash": "NKBWI5vO0A0tR+DrO7YZ9SMWGmFnfllDcFL8bosbZms=",
+  "Source": "programming",
+  "BasePath": "_content/programming",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

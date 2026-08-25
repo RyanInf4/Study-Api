@@ -7,7 +7,7 @@ using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
 public class StudyController : ControllerBase
 {
-
+    private static int AutoIncrement = 1;
     private readonly StudyDbContext _context;
 
     public StudyController (StudyDbContext context)
@@ -24,7 +24,7 @@ public class StudyController : ControllerBase
         return Ok (_context.Users);
     }
 
-    [HttpGet("id")]
+    [HttpGet("{id}")]
 
     public IActionResult GetUserById(User user, int id)
     {
@@ -39,8 +39,9 @@ public class StudyController : ControllerBase
     {
         _context.Users.Add(user);
         _context.SaveChanges();
+        AutoIncrement = AutoIncrement + user.UserId;
 
-        return Ok(user);
+        return CreatedAtAction(nameof(GetUserById), new {id = user.UserId}, user);
     }
 
 

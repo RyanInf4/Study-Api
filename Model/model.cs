@@ -11,10 +11,10 @@ public class User
     public string? Username {get; set;}
 
     [Required, Length(8, 50)]
-    public string? Email {private get; set;}
+    public string? Email { get; set;}
 
     [Required, Length(8, 30)]
-    private string? Password {get; set;}
+    public string? Password {get; set;}
 
     public int UserId {get; set;}
 
@@ -22,7 +22,7 @@ public class User
 
 public class Study
 {
-    public int NoteId {get; set;}
+    public int StudyId {get; set;}
     List<Study> notes = new List<Study>();
 
     public string? Note {get; set;}
