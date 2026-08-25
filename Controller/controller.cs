@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ActionConstraints;
+using Microsoft.EntityFrameworkCore;
 using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
 [ApiController]
@@ -44,15 +46,36 @@ public class StudyController : ControllerBase
         return CreatedAtAction(nameof(GetUserById), new {id = user.UserId}, user);
     }
 
+    [HttpPut("{id}")]
 
-    // [HttpPost]
+    public IActionResult UpdateUser (int id,[FromBody] User user)
+    {
+        var findUserinfo = _context.Users.FirstOrDefault(Auser=> Auser.UserId == id);
 
-    // public IActionResult CreateUser ([FromBody] User user)
-    // {
-    //     _context.Users.Add(user);
-    //     _context.SaveChanges();
+        findUserinfo.Username = user.Username;
+        findUserinfo.Email = user.Email;
+        findUserinfo.Password = user.Password;
+        _context.SaveChanges();
 
-    //     return CreatedAtAction(nameof(GetUserById), new { Id = user.UserId }, user);
-    // }
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+
+    public IActionResult DeleteUser (int id)
+    {
+        var user = _context.Users.Find(id);
+
+        if (user == null)
+        {
+           return NotFound(); 
+        }
+
+        _context.Users.Remove(user);
+        _context.SaveChanges();
+
+        return NoContent();
+        
+    }
     
 }
