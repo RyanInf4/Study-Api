@@ -22,8 +22,16 @@ public class StudyController : ControllerBase
     public IActionResult GetUsers()
     {
         _context.Users.ToList();
+        List<UserDTO> ConvertedUsers = new List<UserDTO>();
 
-        return Ok (_context.Users);
+        foreach (var allusers in _context.Users)
+        {
+            ConvertedUsers.Add(Utilities.ConvertUserDto(allusers));
+        }
+
+        
+
+        return Ok (ConvertedUsers);
     }
 
     [HttpGet("{id}")]

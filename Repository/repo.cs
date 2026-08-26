@@ -1,6 +1,6 @@
 public class Utilities
 {
-    public UserDTO ConvertUserDto (User user)
+    public static UserDTO ConvertUserDto (User user)
     {      
         return new UserDTO()
         {
