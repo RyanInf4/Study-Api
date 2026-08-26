@@ -36,11 +36,16 @@ public class StudyController : ControllerBase
 
     [HttpGet("{id}")]
 
-    public IActionResult GetUserById(User user, int id)
+    public IActionResult GetUserById(int id)
     {
-        var FindUser = _context.Users.FirstOrDefault(ExpectedId => id == user.UserId);
+        var FindUser = _context.Users.FirstOrDefault(ExpectedId => ExpectedId.UserId == id);
 
-        return Ok(FindUser);
+        if (FindUser == null)
+        {
+            return NotFound();
+        }
+
+        return Ok( Utilities.ConvertUserDto(FindUser));
     }
 
         [HttpPost]
