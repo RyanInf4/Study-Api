@@ -51,7 +51,9 @@ public class StudyController : ControllerBase
         _context.SaveChanges();
         AutoIncrement = AutoIncrement + user.UserId;
 
-        return CreatedAtAction(nameof(GetUserById), new {id = user.UserId}, user);
+        var userDTO = Utilities.ConvertUserDto(user);
+
+        return CreatedAtAction(nameof(GetUserById), new {id = user.UserId}, userDTO);
     }
 
     [HttpPut("{id}")]
