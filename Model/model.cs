@@ -14,7 +14,7 @@ public class User
     public string? Email { get; set;}
 
     [Required, Length(8, 30)]
-    public string? Password {get; set;}
+    public string? Password {get; set;} //hidden
 
     public int UserId {get; set;}
 
