@@ -1,6 +1,6 @@
 public class Utilities
 {
-    public static UserDTO ConvertUserDto (User user)
+    public static async Task<UserDTO> ConvertUserDto (User user)
     {      
         return new UserDTO()
         {

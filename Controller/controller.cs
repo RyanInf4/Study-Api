@@ -19,12 +19,12 @@ public class StudyController : ControllerBase
 
     [HttpGet]
 
-    public IActionResult GetUsers()
+    public async Task<IActionResult> GetUsers()
     {
-        _context.Users.ToList();
-        List<UserDTO> ConvertedUsers = new List<UserDTO>();
+        await _context.Users.ToListAsync();
+        List<Task<UserDTO>> ConvertedUsers = new List<Task<UserDTO>>();
 
-        foreach (var allusers in _context.Users)
+        await foreach (var allusers in _context.Users)
         {
             ConvertedUsers.Add(Utilities.ConvertUserDto(allusers));
         }
@@ -36,24 +36,29 @@ public class StudyController : ControllerBase
 
     [HttpGet("{id}")]
 
-    public IActionResult GetUserById(int id)
+    public async Task<IActionResult> GetUserById(int id)
     {
-        var FindUser = _context.Users.FirstOrDefault(ExpectedId => ExpectedId.UserId == id);
+        var FindUser = await _context.Users.FindAsync(id);
 
         if (FindUser == null)
         {
             return NotFound();
         }
 
-        return Ok( Utilities.ConvertUserDto(FindUser));
+        return Ok(Utilities.ConvertUserDto(FindUser));
     }
 
         [HttpPost]
 
-    public IActionResult CreateUser ([FromBody] User user)
+    public async Task<IActionResult> CreateUser ([FromBody] User user)
     {
-        _context.Users.Add(user);
-        _context.SaveChanges();
+        if (user.Username == null || user.Email == null || user.Password == null )
+        {
+            return BadRequest();
+        }
+
+        await _context.Users.AddAsync(user);
+        await _context.SaveChangesAsync();
         AutoIncrement = AutoIncrement + user.UserId;
 
         var userDTO = Utilities.ConvertUserDto(user);
@@ -63,23 +68,34 @@ public class StudyController : ControllerBase
 
     [HttpPut("{id}")]
 
-    public IActionResult UpdateUser (int id,[FromBody] User user)
+    public async Task<IActionResult> UpdateUser (int id,[FromBody] User user)
     {
-        var findUserinfo = _context.Users.FirstOrDefault(Auser=> Auser.UserId == id);
+        var findUserinfo = await _context.Users.FindAsync(id);
+
+        if (findUserinfo == null)
+        {
+            return NotFound();
+        }
+
+        if (findUserinfo.Username == null || findUserinfo.Email == null || findUserinfo.Password == null)
+        {
+            return BadRequest();
+        }
 
         findUserinfo.Username = user.Username;
         findUserinfo.Email = user.Email;
         findUserinfo.Password = user.Password;
-        _context.SaveChanges();
+
+        await _context.SaveChangesAsync();
 
         return NoContent();
     }
 
     [HttpDelete("{id}")]
 
-    public IActionResult DeleteUser (int id)
+    public async Task<IActionResult> DeleteUser (int id)
     {
-        var user = _context.Users.Find(id);
+        var user = await _context.Users.FindAsync(id);
 
         if (user == null)
         {
@@ -87,7 +103,7 @@ public class StudyController : ControllerBase
         }
 
         _context.Users.Remove(user);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
 
         return NoContent();
         
