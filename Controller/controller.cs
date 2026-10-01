@@ -7,12 +7,12 @@ using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 [ApiController]
 [Route("api/[controller]")]
 
-public class StudyController : ControllerBase
+public class UsersController : ControllerBase
 {
     private static int AutoIncrement = 1;
     private readonly StudyDbContext _context;
 
-    public StudyController (StudyDbContext context)
+    public UsersController (StudyDbContext context)
     {
         _context = context;
     }
@@ -108,5 +108,66 @@ public class StudyController : ControllerBase
         return NoContent();
         
     }
+
+
     
+}
+
+[ApiController]
+[Route("api/[controller]")]
+
+public class StudiesController : ControllerBase
+{
+    private static int AutoIncrement = 1;
+    private readonly StudyDbContext _context;
+
+    public StudiesController (StudyDbContext context)
+    {
+        _context = context;
+    }
+
+        [HttpGet]
+
+    public async Task<IActionResult> GetNotes ()
+    {
+        var Notes = await _context.Studies.ToListAsync();
+
+        if (Notes == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(Notes);
+    }
+
+    [HttpGet("{id}")]
+
+    public async Task<IActionResult> GetNoteById (int id)
+    {
+        var NoteFound = await _context.Studies.FindAsync(id);
+
+        if (NoteFound == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(NoteFound);
+    }
+
+    [HttpPost]
+
+    public async Task<IActionResult> PostNotes ([FromBody] Study note)
+    {
+        if (note.Subject == null)
+        {
+            return BadRequest();
+        }
+
+        await _context.Studies.AddAsync(note);
+        await _context.SaveChangesAsync();
+        AutoIncrement = AutoIncrement + note.StudyId;
+
+        return CreatedAtAction(nameof(GetNoteById), new {id = note.StudyId} , note);
+    }
+
 }

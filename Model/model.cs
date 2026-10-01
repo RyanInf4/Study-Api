@@ -23,8 +23,6 @@ public class User
 public class Study
 {
     public int StudyId {get; set;}
-    List<Study> notes = new List<Study>();
-
     public string? Note {get; set;}
 
     [Required, Length(4, 16)]

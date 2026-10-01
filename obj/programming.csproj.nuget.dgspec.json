@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/infavoravel/Documents/programming/Study-Api/programming.csproj": {}
+    "/home/infavoravel/Desktop/Programming/Study-Api/programming.csproj": {}
   },
   "projects": {
-    "/home/infavoravel/Documents/programming/Study-Api/programming.csproj": {
+    "/home/infavoravel/Desktop/Programming/Study-Api/programming.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/infavoravel/Documents/programming/Study-Api/programming.csproj",
+        "projectUniqueName": "/home/infavoravel/Desktop/Programming/Study-Api/programming.csproj",
         "projectName": "programming",
-        "projectPath": "/home/infavoravel/Documents/programming/Study-Api/programming.csproj",
+        "projectPath": "/home/infavoravel/Desktop/Programming/Study-Api/programming.csproj",
         "packagesPath": "/home/infavoravel/.nuget/packages/",
-        "outputPath": "/home/infavoravel/Documents/programming/Study-Api/obj/",
+        "outputPath": "/home/infavoravel/Desktop/Programming/Study-Api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/infavoravel/.nuget/NuGet/NuGet.Config"
@@ -32,40 +32,35 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Aspire.Npgsql.EntityFrameworkCore.PostgreSQL": {
-              "target": "Package",
-              "version": "[8.0.1, )"
-            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.30, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.30, )"
+              "version": "[8.0.13, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.30, )"
+              "version": "[8.0.13, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.13, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.8, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -86,7 +81,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.30, 8.0.30]"
+              "version": "[8.0.31, 8.0.31]"
             }
           ],
           "frameworkReferences": {
@@ -97,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.424/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.131/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
